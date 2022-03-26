@@ -6,6 +6,7 @@
         {{ partial "share-buttons" . }}
       </div>
       <div class="content">
+	      <p><b>Table of contents</b></p>
         {{ .Render "featured" }}
         {{ if and (gt .WordCount .Site.Params.tocWords) ( .Site.Params.toc ) }}
           {{ .TableOfContents }}

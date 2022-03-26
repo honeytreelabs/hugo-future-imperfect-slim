@@ -13,6 +13,13 @@
   <div class="meta">
     <time datetime="{{ .Date }}">{{ .Render "date" }}</time>
     {{ with .Params.author }}<p>{{ . }}</p>{{ end }}
+    {{ if gt .ReadingTime 3 }}
     {{ if .Site.Params.ReadingTime }}<p>{{ i18n "reading_time" .ReadingTime }}</p>{{ end }}
+    {{ end }}
+    {{ $date := .Date.Format "02.01.2006" }}
+    {{ $lastmod := .Lastmod.Format "02.01.2006" }}
+    {{ if ne $lastmod $date }}
+    <timelastmod datetime="{{ .Lastmod }}">{{ i18n "updated" }} {{ .Lastmod.Format "Jan. 2, 2006" }}</timelastmod>
+    {{ end }}
   </div>
 </header>

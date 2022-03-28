@@ -14,9 +14,14 @@
   <div class="meta">
     <time datetime="{{ .Date }}">{{ .Render "date" }}</time>
     {{ $author := index .Site.Data.authors (.Params.author | default "default") }}
-    {{ if $author }}
-      {{ $author.name }}
-    {{  end }}
+    {{ if (eq $author.name nil) }}
+        {{/*  Author not defined in data/authors yet, use default.json:  */}}
+        {{ $author := index .Site.Data.authors "default" }}
+        {{ $author.name }}
+      {{ else }}
+        {{/*  Using author from [author].json:  */}}
+        {{ $author.name }}
+    {{ end }}
 
     {{ if gt .ReadingTime 3 }}
     {{ if .Site.Params.ReadingTime }}<p>{{ i18n "reading_time" .ReadingTime }}</p>{{ end }}

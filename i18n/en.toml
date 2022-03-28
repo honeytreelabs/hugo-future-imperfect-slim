@@ -22,6 +22,9 @@
   other = "Replies typically within {{ .Count }} hours."
 [blog]
   other = "Blog"
+[authors]
+  one = "Author"
+  other = "Authors"
 [categories]
   one = "Category"
   other = "Categories"

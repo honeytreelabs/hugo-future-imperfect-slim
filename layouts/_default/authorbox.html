@@ -1,0 +1,41 @@
+<div class="authorbox">
+  {{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+  {{ if (eq $author.name nil) }}
+    {{ $author := index .Site.Data.authors "default" }}
+    {{- with $author.avatar }}
+      <a href="{{ $.Site.BaseURL }}author/{{ $.Params.author }}">
+        <figure class="authorbox__avatar">
+            <img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar">
+        </figure>
+      </a>
+    {{- end }}
+    {{- with $author.shortname }}
+        <div class="authorbox__header">
+            <span class="authorbox__name">About {{ . }}</span>
+        </div>
+    {{- end }}
+    {{- with $author.bio }}
+        <div class="authorbox__description">
+            {{ . }}
+        </div>
+    {{- end }}
+  {{ else }}
+    {{- with $author.avatar }}
+      <a href="{{ $.Site.BaseURL }}author/{{ $.Params.author }}">
+        <figure class="authorbox__avatar">
+            <img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar">
+        </figure>
+      </a>
+    {{- end }}
+    {{- with $author.shortname }}
+        <div class="authorbox__header">
+            <span class="authorbox__name">About {{ . }}</span>
+        </div>
+    {{- end }}
+    {{- with $author.bio }}
+        <div class="authorbox__description">
+            {{ . }}
+        </div>
+    {{- end }}
+  {{ end }}
+</div>

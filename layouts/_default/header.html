@@ -17,10 +17,10 @@
     {{ if (eq $author.name nil) }}
         {{/*  Author not defined in data/authors yet, use default.json:  */}}
         {{ $author := index .Site.Data.authors "default" }}
-        {{ $author.name }}
+        <a href="">{{ $author.name }}</a>
       {{ else }}
         {{/*  Using author from [author].json:  */}}
-        {{ $author.name }}
+        <a href="{{ $.Site.BaseURL }}authors/{{ $.Params.author }}">{{ $author.name }}</a>
     {{ end }}
 
     {{ if gt .ReadingTime 3 }}

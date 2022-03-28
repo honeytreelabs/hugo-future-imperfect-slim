@@ -17,6 +17,9 @@
         {{ .Render "stats" }}
       </footer>
     </div>
+    {{ if not ( eq .Params.authorbox false) }}
+      {{ .Render "authorbox" }}
+    {{ end }}
     {{ if not ( eq .Params.comments false) }}
       {{ .Render "comments" }}
     {{ end }}

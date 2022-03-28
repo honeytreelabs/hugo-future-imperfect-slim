@@ -1567,6 +1567,37 @@ figcaption {
   }
 */
 
+/* Authorbox */
+
+.authorbox {
+  @extend .post;
+
+}
+
+.authorbox__avatar {
+	float: left;
+  width: $avatar-size;
+  height: $avatar-size;
+	padding: 3px;
+	margin: 0 25px 0 0;
+	border: 3px solid #2a2a2a;
+	border-radius: 250px;
+}
+
+.authorbox__avatar img {
+	border-radius: 250px;
+}
+
+.authorbox__header {
+	margin-bottom: 10px;
+}
+
+.authorbox__name {
+	font-size: 16px;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
 /* Image Masks */
 
 @each $name, $clip in $masks {

@@ -9,13 +9,19 @@
     {{ with .Description }}
       <p>{{ . }}</p>
     {{ end }}
+
   </div>
   <div class="meta">
     <time datetime="{{ .Date }}">{{ .Render "date" }}</time>
-    {{ with .Params.author }}<p>{{ . }}</p>{{ end }}
+    {{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+    {{ if $author }}
+      {{ $author.name }}
+    {{  end }}
+
     {{ if gt .ReadingTime 3 }}
     {{ if .Site.Params.ReadingTime }}<p>{{ i18n "reading_time" .ReadingTime }}</p>{{ end }}
     {{ end }}
+
     {{ $date := .Date.Format "02.01.2006" }}
     {{ $lastmod := .Lastmod.Format "02.01.2006" }}
     {{ if ne $lastmod $date }}

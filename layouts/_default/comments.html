@@ -113,7 +113,8 @@
   </div>
 {{ else if or .Site.Params.commento.enabled .Site.Params.commento.commento }}
 <div class='post'>
-  <script defer src="http://localhost:8081/js/commento.js"></script>
+  <noscript>Enable JavaScript for user comments.</noscript>
+  <script defer src="{{ .Site.Params.commento.server }}"></script> 
   <div id="commento"></div>
 </div>
 {{ end }}

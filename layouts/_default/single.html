@@ -8,7 +8,7 @@
       <div class="content">
         {{ .Render "featured" }}
         {{ if and (gt .WordCount .Site.Params.tocWords) ( .Site.Params.toc ) }}
-	        <p><b>Table of contents</b></p>
+	        {{/*  <p><b>Table of contents</b></p>  */}}
           {{ .TableOfContents }}
         {{ end }}
         {{ .Content }}

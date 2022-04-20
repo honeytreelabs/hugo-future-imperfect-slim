@@ -1,5 +1,6 @@
-<header>
+<header {{ if .Draft }}style="background-color:lightgray;"{{ end }}>
   <div class="title">
+    {{ if .Draft }}<b><u>DRAFT:</u></b>{{ end }}
     {{ if $.Scratch.Get "h1" }}
       <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
       {{ $.Scratch.Set "h1" false }}
@@ -9,7 +10,6 @@
     {{ with .Description }}
       <p>{{ . }}</p>
     {{ end }}
-
   </div>
   <div class="meta">
     <time datetime="{{ .Date }}">{{ .Render "date" }}</time>

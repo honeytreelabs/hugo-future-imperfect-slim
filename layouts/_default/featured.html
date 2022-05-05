@@ -4,7 +4,8 @@
   {{- $stretch := .Site.Params.imageStretch -}}
   {{- $blur := .Site.Params.removeBlur -}}
   {{- if .Params.featured -}}
-    {{- $src = (path.Join "img" (cond (eq .Params.featuredpath "date") (.Page.Date.Format "2006/01") (.Params.featuredpath)) .Params.featured) | relURL -}}
+    {{/*  {{- $src = (path.Join "img" (cond (eq .Params.featuredpath "date") (.Page.Date.Format "2006/01") (.Params.featuredpath)) .Params.featured) | relURL -}}  */}}
+    {{- $src = .src -}}
     {{- $alt = .Params.featuredalt -}}
     {{- with .Params.featuredstretch -}}
       {{- $stretch = . -}}
@@ -14,7 +15,7 @@
     {{- end -}}
   {{- else if .Params.images -}}
     {{- range first 1 .Params.images -}}
-      {{- $src = .src | relURL -}}
+      {{- $src = .src -}}
       {{- $alt = .alt -}}
       {{- with .stretch -}}
         {{- $stretch = . -}}
@@ -24,7 +25,7 @@
       {{- end -}}
     {{- end -}}
   {{- end -}}
-  <a href="{{ $.Page.RelPermalink }}" class="image"{{ if not ($blur) }} style="--bg-image: url('{{ $src }}');"{{ end }}>
+  <a href="{{ $.Page.RelPermalink }}" class="image"{{ if not ($blur) }} style="--bg-image: url('{{ $.Page.RelPermalink }}{{ $src }}');"{{ end }}>
     <img {{ with $stretch }}class="{{ if or (eq (lower .) "vertical") (eq (lower .) "v") }}stretchV{{ else if or (eq (lower .) "horizontal") (eq (lower .) "h") }}stretchH{{ else if or (eq (lower .) "cover") (eq (lower .) "c") }}cover{{ end }}" {{ end }}src="{{ $src }}" alt="{{ $alt }}">
   </a>
 {{- end -}}

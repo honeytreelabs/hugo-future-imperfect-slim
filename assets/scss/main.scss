@@ -369,6 +369,33 @@ pre {
   }
 }
 
+div[class=chroma] {
+  display: table;
+  font-family: $code-font;
+  font-size: 0.9em;
+  table-layout: fixed;
+  line-height: 1.25;
+  width: 100%;
+  pre[class=chroma] {
+    display: table;
+    font-family: $code-font;
+    font-size: 0.9em;
+    table-layout: fixed;
+    line-height: 1.25;
+    width: auto;
+  } 
+  code {
+    display: block;
+    padding: 1em 1.5em;
+    overflow-x: auto;
+  }
+  table[class=lntable] {
+    width: auto; 
+    overflow: auto; 
+    display: block;
+  }
+}
+
 hr {
   border: 0;
   border-bottom: $primary-border;
@@ -463,7 +490,7 @@ textarea {
   opacity: 1;
 }
 
-table {
+table:not(.lntable) {
   background-color: $white;
   box-shadow: $shadow-1;
   margin: 1em auto;
